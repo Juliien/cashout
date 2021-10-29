@@ -1,0 +1,28 @@
+<mat-toolbar>
+    <span class="text-w">{{accountService.currentAccount.nickname}}</span>
+    <span class="spacer"></span>
+    <span class="text-w">
+      {{accountService.currentAccount.cash}}
+    </span>
+</mat-toolbar>
+
+<mat-card class="game gradient-border">
+  <mat-card-content>
+    <h1 class="text-center">{{value |  number :'1.2-2'}}X</h1>
+    <img mat-card-image src="assets/images/cash.jpg">
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-content class="justify-content-center">
+    <mat-form-field appearance="outline">
+      <mat-label>Montant</mat-label>
+      <input matInput placeholder="10" type="number" [(ngModel)]="bet">
+      <mat-icon matSuffix>euro</mat-icon>
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-actions class="justify-content-center">
+    <button *ngIf="!isStart" mat-flat-button color="primary" (click)="generateBet()" [disabled]="isCashOut">Bet</button>
+    <button *ngIf="isStart" mat-flat-button color="accent" (click)="cashOut()">Cash Out</button>
+  </mat-card-actions>
+</mat-card>
