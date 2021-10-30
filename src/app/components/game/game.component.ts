@@ -10,7 +10,6 @@ import {Router} from "@angular/router";
 export class GameComponent implements OnInit {
   value: number = 1.00;
   bet: number = 1;
-  lastBest: number[] = []
   isStart: boolean = false;
   isCashOut: boolean = false;
 
@@ -31,20 +30,31 @@ export class GameComponent implements OnInit {
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
+  getRandomRate() {
+    const chance = Math.floor(Math.random() * 3);
+    if(chance == 0 || chance == 2) {
+      return Math.random() * (1.15 - 1.00) + 1.00;
+    }
+    return Math.random() * (50.00 - 1.00) + 1.00;
+  }
+
   async generateBet() {
     if(this.accountService.currentAccount.cash < this.bet) {
       alert("Vous n'avez pas asser de tune !")
       return;
     }
+
     this.isStart = true
     this.accountService.currentAccount.cash -= this.bet;
     this.accountService.setAccount(this.accountService.currentAccount);
-    const rand = Math.floor(Math.random() * (10 * 100 - 100) + 100) / 100;
+    const rand = this.getRandomRate()
+
     let i = 1.00;
     for(i; i <= rand; i+=0.01) {
         this.value = i;
-        await this.delay(100);
+        await this.delay(80);
     }
+
     this.isStart = false
     this.isCashOut = false;
   }

@@ -2,11 +2,11 @@
     <span class="text-w">{{accountService.currentAccount.nickname}}</span>
     <span class="spacer"></span>
     <span class="text-w">
-      {{accountService.currentAccount.cash}}
+      {{accountService.currentAccount.cash |  number :'1.2-2'}}
     </span>
 </mat-toolbar>
 
-<mat-card class="game gradient-border">
+<mat-card class="gradient-border">
   <mat-card-content>
     <h1 class="text-center">{{value |  number :'1.2-2'}}X</h1>
     <img mat-card-image src="assets/images/cash.jpg">
