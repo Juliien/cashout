@@ -1,7 +1,6 @@
 button {
   padding: 1em 3em 1em 3em;
 }
-
 mat-toolbar {
   background: transparent;
 }
@@ -9,7 +8,78 @@ mat-toolbar {
   color: #fefefe;
 }
 mat-card {
-  margin-bottom: 1em;
+  background-color: transparent;
+  box-shadow: none !important;
+}
+::ng-deep .mat-form-field-flex {
+  background-color: #e1e1e1 !important;
+}
+
+// coin
+.coin {
+  background: rgb(255,192,1);
+  background: linear-gradient(143deg, rgba(255,192,1,1) 0%, rgba(255,217,0,1) 48%, rgba(204,153,0,1) 100%);
+  width: 100px;
+  height: 100px;
+  display: block;
+  position: relative;
+  clip-path: circle(50% at 50% 50%);
+  font-family: 'Source Sans Pro', sans-serif;
+  margin:auto;
+  cursor: pointer;
+}
+.coin .borderext {
+  width: 90px;
+  height: 90px;
+  border:solid 3px #c79600;
+  border-radius: 100%;
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 2px;
+}
+.coin .borderint {
+  width: 80px;
+  height: 80px;
+  border:solid 1px #c79600;
+  border-radius: 100%;
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 9px;
+  text-align: center;
+  font-size: 40px;
+}
+.coin .number {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 37px;
+  width: 33px;
+  font-size: 60px;
+  color: #927008;
+}
+.coin::before {
+  content: '';
+  position: absolute;
+  top: -15%;
+  width: 200px;
+  height: 10px;
+  background: #fff;
+  transition: all .3s ease;
+  -webkit-transform:
+    translateY(-20px)
+    translateX(-20px)
+    rotate(-26deg);
+}
+
+.coin:hover::before {
+  top: 120%;
 }
 
 @media only screen and (min-width: 768px) {

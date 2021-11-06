@@ -33,9 +33,9 @@ export class GameComponent implements OnInit {
   getRandomRate() {
     const chance = Math.floor(Math.random() * 3);
     if(chance == 0 || chance == 2) {
-      return Math.random() * (1.15 - 1.00) + 1.00;
+      return Math.random() * (1.20 - 1.00) + 1.00;
     }
-    return Math.random() * (50.00 - 1.00) + 1.00;
+    return Math.random() * (10.00 - 1.00) + 1.00;
   }
 
   async generateBet() {
@@ -52,7 +52,10 @@ export class GameComponent implements OnInit {
     let i = 1.00;
     for(i; i <= rand; i+=0.01) {
         this.value = i;
-        await this.delay(80);
+        if(i > 3)
+          await this.delay(70);
+        else
+          await this.delay(100);
     }
 
     this.isStart = false
